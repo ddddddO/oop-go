@@ -1,6 +1,6 @@
 @startuml
 
-interface Curator{
+interface Curator {
 	+ Collect(): error
 	+ Reserch(): error
 	+ Save(): error
@@ -8,7 +8,7 @@ interface Curator{
 }
 
 class BaseCurator {
-    - target: string
+    + Target: string
     - data: []interface{}
 	+ Collect(): error
 	+ Reserch(): error
@@ -16,22 +16,53 @@ class BaseCurator {
 	+ Show(): error
 }
 
-class TwitterCurator {
-    - target: string
-    - data: []interface{}
-	+ Collect(): error
-	+ Reserch(): error
-	+ Save(): error
-	+ Show(): error
+interface Authenticator{
+	+ Auth(): error
 }
+
+class ApiCurator {
+	+ ClientID: string
+	+ ClientSecret: string
+	+ Auth(): error
+}
+
+class GurunaviCurator {
+}
+
+class SpotifyCurator {
+}
+
+class TwitterCurator {
+}
+
+class ScrapeCurator {
+}
+
+class TabelogCurator {
+}
+
+
 
 Curator <|.. BaseCurator
 note on link
 実現関係
 end note
 
-BaseCurator <|-- TwitterCurator
+BaseCurator <|-- ApiCurator
 note on link
 継承
 end note
+
+BaseCurator <|-- ScrapeCurator
+ScrapeCurator <|-- TabelogCurator
+
+
+Authenticator <|.. ApiCurator
+
+ApiCurator <|-- GurunaviCurator
+ApiCurator <|-- SpotifyCurator
+ApiCurator <|-- TwitterCurator
+
+
+
 @enduml
