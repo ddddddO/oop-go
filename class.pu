@@ -1,0 +1,37 @@
+@startuml
+
+interface Curator{
+	+ Collect(): error
+	+ Reserch(): error
+	+ Save(): error
+	+ Show(): error
+}
+
+class BaseCurator {
+    - target: string
+    - data: []interface{}
+	+ Collect(): error
+	+ Reserch(): error
+	+ Save(): error
+	+ Show(): error
+}
+
+class TwitterCurator {
+    - target: string
+    - data: []interface{}
+	+ Collect(): error
+	+ Reserch(): error
+	+ Save(): error
+	+ Show(): error
+}
+
+Curator <|.. BaseCurator
+note on link
+実現関係
+end note
+
+BaseCurator <|-- TwitterCurator
+note on link
+継承
+end note
+@enduml
