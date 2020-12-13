@@ -9,6 +9,8 @@ import (
 // APIの子クラス(Baseの孫クラス)
 type TwitterCurator struct {
 	c.ApiCurator // 継承
+
+	Tweets []Tweet
 }
 
 // コンストラクタ
@@ -22,6 +24,7 @@ func NewTwitterCurator(target, clientID, clientSecret string) *TwitterCurator {
 			ClientID:     clientID,
 			ClientSecret: clientSecret,
 		},
+		nil,
 	}
 }
 
@@ -29,4 +32,13 @@ func NewTwitterCurator(target, clientID, clientSecret string) *TwitterCurator {
 func (tc *TwitterCurator) Reserch() error {
 	fmt.Println("TwitterCurator.Reserch")
 	return nil
+}
+
+type Tweet struct {
+	id   int
+	text string
+}
+
+func (tw *Tweet) Text() string {
+	return tw.text
 }

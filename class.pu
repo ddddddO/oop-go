@@ -33,6 +33,7 @@ class SpotifyCurator {
 }
 
 class TwitterCurator {
+	+ Tweets []Tweet
 }
 
 class ScrapeCurator {
@@ -41,7 +42,11 @@ class ScrapeCurator {
 class TabelogCurator {
 }
 
-
+class Tweet {
+    - id : int
+    - text : string
+	+ Text(): string
+}
 
 Curator <|.. BaseCurator
 note on link
@@ -62,7 +67,9 @@ Authenticator <|.. ApiCurator
 ApiCurator <|-- GurunaviCurator
 ApiCurator <|-- SpotifyCurator
 ApiCurator <|-- TwitterCurator
-
-
+TwitterCurator *--> Tweet
+note on link
+コンポジション
+end note
 
 @enduml
