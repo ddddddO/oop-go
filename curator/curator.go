@@ -18,8 +18,8 @@ func Run(curators []Curator) error {
 	for _, curator := range curators {
 		fmt.Println("----------------------------")
 
-		if apiCurator, ok := curator.(Authenticator); ok {
-			if err := apiCurator.Auth(); err != nil {
+		if authenticator, ok := curator.(Authenticator); ok {
+			if err := authenticator.Auth(); err != nil {
 				return err
 			}
 		}
